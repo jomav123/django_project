@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ game.name }} - Game Hub{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/save-score.js' %}"></script>
+{% endblock %}
+
+{% block content %}
+<div class="game-container">
+    <a href="{% url 'home' %}" class="back-button">← Back to Games</a>
+    
+    <div class="game-wrapper">
+        <div class="game-header">
+            <h1>{{ game.name }}</h1>
+            <p>Use arrow keys (↑↓←→) or WASD to control the snake. Eat food to grow and score points!</p>
+        </div>
+        
+        <div style="text-align: center; margin-bottom: 2rem;">
+            <div style="display: inline-block; background: var(--bg-dark); padding: 1rem 2rem; border-radius: 8px; margin: 0 1rem;">
+                <div style="color: var(--text-secondary); font-size: 0.9rem;">Score</div>
+                <div id="score" style="font-size: 2rem; font-weight: bold; color: var(--primary-color);">0</div>
+            </div>
+            <div style="display: inline-block; background: var(--bg-dark); padding: 1rem 2rem; border-radius: 8px; margin: 0 1rem;">
+                <div style="color: var(--text-secondary); font-size: 0.9rem;">High Score</div>
+                <div id="highScore" style="font-size: 2rem; font-weight: bold; color: var(--success-color);">0</div>
+            </div>
+        </div>
+        
+        <div style="text-align: center;">
+            <canvas id="gameCanvas" width="400" height="400" style="border: 3px solid var(--border-color); border-radius: 8px; background: var(--bg-dark); max-width: 100%;"></canvas>
+        </div>
+        
+        <div style="text-align: center; margin-top: 2rem;">
+            <button id="startBtn" class="btn btn-primary" onclick="startGame()">Start Game</button>
+            <button id="pauseBtn" class="btn btn-secondary" onclick="togglePause()" style="display: none;">Pause</button>
+        </div>
+        
+        <div id="gameOver" style="display: none; text-align: center; margin-top: 2rem; padding: 2rem; background: rgba(239, 68, 68, 0.1); border: 2px solid var(--error-color); border-radius: 8px;">
+            <h2 style="color: var(--error-color); margin-bottom: 1rem;">Game Over!</h2>
+            <p style="margin-bottom: 1rem;">Final Score: <span id="finalScore" style="font-weight: bold; color: var(--primary-color);"></span></p>
+            <button class="btn btn-primary" onclick="startGame()">Play Again</button>
+        </div>
+    </div>
+</div>
+
+<script src="{% static 'js/snake.js' %}"></script>
+{% endblock %}
+

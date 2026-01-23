@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ game.name }} - Game Hub{% endblock %}
+
+{% block content %}
+<div class="game-container">
+    <a href="{% url 'home' %}" class="back-button">← Back to Games</a>
+    
+    <div class="game-wrapper">
+        <div class="game-header">
+            <h1>{{ game.name }}</h1>
+            <p>Guess the word letter by letter! Type letters on your keyboard or click the buttons.</p>
+        </div>
+        
+        <div style="text-align: center; margin-bottom: 2rem;">
+            <div style="display: inline-block; background: var(--bg-dark); padding: 1rem 2rem; border-radius: 8px; margin: 0 1rem;">
+                <div style="color: var(--text-secondary); font-size: 0.9rem;">Wrong Guesses</div>
+                <div id="wrongGuesses" style="font-size: 2rem; font-weight: bold; color: var(--error-color);">0 / 6</div>
+            </div>
+            <div style="display: inline-block; background: var(--bg-dark); padding: 1rem 2rem; border-radius: 8px; margin: 0 1rem;">
+                <div style="color: var(--text-secondary); font-size: 0.9rem;">Score</div>
+                <div id="score" style="font-size: 2rem; font-weight: bold; color: var(--primary-color);">0</div>
+            </div>
+        </div>
+        
+        <div style="text-align: center; margin-bottom: 2rem;">
+            <canvas id="hangmanCanvas" width="300" height="400" style="border: 2px solid var(--border-color); border-radius: 8px; background: var(--bg-dark); max-width: 100%;"></canvas>
+        </div>
+        
+        <div style="text-align: center; margin-bottom: 2rem;">
+            <div id="wordDisplay" style="font-size: 2.5rem; font-weight: bold; letter-spacing: 0.5rem; color: var(--text-primary); margin: 2rem 0; font-family: monospace;"></div>
+        </div>
+        
+        <div style="text-align: center; margin-bottom: 2rem;">
+            <div id="keyboard" style="display: grid; grid-template-columns: repeat(13, 1fr); gap: 0.5rem; max-width: 800px; margin: 0 auto;"></div>
+        </div>
+        
+        <div style="text-align: center; margin-top: 2rem;">
+            <button id="newGameBtn" class="btn btn-primary" onclick="startNewGame()">New Word</button>
+        </div>
+        
+        <div id="gameResult" style="display: none; text-align: center; margin-top: 2rem; padding: 2rem; background: rgba(99, 102, 241, 0.1); border: 2px solid var(--primary-color); border-radius: 8px;">
+            <h2 id="resultText" style="margin-bottom: 1rem;"></h2>
+            <p id="wordReveal" style="margin-bottom: 1rem; font-size: 1.2rem;"></p>
+            <button class="btn btn-primary" onclick="startNewGame()">Play Again</button>
+        </div>
+    </div>
+</div>
+
+<script src="{% static 'js/save-score.js' %}"></script>
+<script src="{% static 'js/hangman.js' %}"></script>
+{% endblock %}
+

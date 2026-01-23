@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Game Hub - Home{% endblock %}
+
+{% block content %}
+<div class="page-header">
+    <h1 class="page-title">Welcome to Game Hub</h1>
+    <p class="page-subtitle">Choose a game and start playing!</p>
+</div>
+
+<div class="games-grid">
+    {% for game in games %}
+        <div class="game-card" onclick="window.location.href='{% url 'game_detail' game.slug %}'">
+            <span class="game-icon">{{ game.icon }}</span>
+            <h2 class="game-title">{{ game.name }}</h2>
+            <p class="game-description">{{ game.description|default:"Have fun playing!" }}</p>
+            <a href="{% url 'game_detail' game.slug %}" class="game-link">Play Now</a>
+        </div>
+    {% endfor %}
+    
+    {% for i in empty_slots %}
+        <div class="game-card empty">
+            <span class="game-icon">🎮</span>
+            <h2 class="game-title">Coming Soon</h2>
+            <p class="game-description">New game coming soon!</p>
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}
+

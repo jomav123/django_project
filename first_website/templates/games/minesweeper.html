@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ game.name }} - Game Hub{% endblock %}
+
+{% block content %}
+<div class="game-container">
+    <a href="{% url 'home' %}" class="back-button">← Back to Games</a>
+    
+    <div class="game-wrapper">
+        <div class="game-header">
+            <h1>{{ game.name }}</h1>
+            <p>Click to reveal cells, right-click to flag mines. Find all mines without exploding!</p>
+        </div>
+        
+        <div style="text-align: center; margin-bottom: 2rem;">
+            <div style="display: inline-block; background: var(--bg-dark); padding: 1rem 2rem; border-radius: 8px; margin: 0 1rem;">
+                <div style="color: var(--text-secondary); font-size: 0.9rem;">Mines Left</div>
+                <div id="minesLeft" style="font-size: 2rem; font-weight: bold; color: var(--error-color);">10</div>
+            </div>
+            <div style="display: inline-block; background: var(--bg-dark); padding: 1rem 2rem; border-radius: 8px; margin: 0 1rem;">
+                <div style="color: var(--text-secondary); font-size: 0.9rem;">Time</div>
+                <div id="timer" style="font-size: 2rem; font-weight: bold; color: var(--primary-color);">0</div>
+            </div>
+        </div>
+        
+        <div style="text-align: center; margin-bottom: 2rem;">
+            <select id="difficulty" style="padding: 0.75rem; background: var(--bg-dark); border: 2px solid var(--border-color); border-radius: 8px; color: var(--text-primary); margin-right: 1rem;">
+                <option value="easy">Easy (8x8, 10 mines)</option>
+                <option value="medium" selected>Medium (12x12, 25 mines)</option>
+                <option value="hard">Hard (16x16, 40 mines)</option>
+            </select>
+            <button class="btn btn-primary" onclick="startNewGame()">New Game</button>
+        </div>
+        
+        <div style="text-align: center; margin-bottom: 2rem;">
+            <div id="gameBoard" style="display: inline-grid; gap: 2px; background: var(--border-color); padding: 2px; border-radius: 8px;"></div>
+        </div>
+        
+        <div id="gameResult" style="display: none; text-align: center; margin-top: 2rem; padding: 2rem; background: rgba(99, 102, 241, 0.1); border: 2px solid var(--primary-color); border-radius: 8px;">
+            <h2 id="resultText" style="margin-bottom: 1rem;"></h2>
+            <button class="btn btn-primary" onclick="startNewGame()">Play Again</button>
+        </div>
+    </div>
+</div>
+
+<script src="{% static 'js/save-score.js' %}"></script>
+<script src="{% static 'js/minesweeper.js' %}"></script>
+{% endblock %}
+

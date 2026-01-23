@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ game.name }} - Game Hub{% endblock %}
+
+{% block content %}
+<div class="game-container">
+    <a href="{% url 'home' %}" class="back-button">← Back to Games</a>
+    
+    <div class="game-wrapper">
+        <div class="game-header">
+            <h1>{{ game.name }}</h1>
+            <p>Find matching pairs of cards. Click on cards to flip them!</p>
+        </div>
+        
+        <div style="text-align: center; margin-bottom: 2rem;">
+            <div style="display: inline-block; background: var(--bg-dark); padding: 1rem 2rem; border-radius: 8px; margin: 0 1rem;">
+                <div style="color: var(--text-secondary); font-size: 0.9rem;">Moves</div>
+                <div id="moves" style="font-size: 2rem; font-weight: bold; color: var(--primary-color);">0</div>
+            </div>
+            <div style="display: inline-block; background: var(--bg-dark); padding: 1rem 2rem; border-radius: 8px; margin: 0 1rem;">
+                <div style="color: var(--text-secondary); font-size: 0.9rem;">Pairs Found</div>
+                <div id="pairs" style="font-size: 2rem; font-weight: bold; color: var(--success-color);">0 / 8</div>
+            </div>
+        </div>
+        
+        <div id="gameBoard" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; max-width: 600px; margin: 0 auto;"></div>
+        
+        <div style="text-align: center; margin-top: 2rem;">
+            <button id="startBtn" class="btn btn-primary" onclick="startGame()">Start Game</button>
+            <button id="restartBtn" class="btn btn-secondary" onclick="startGame()" style="display: none;">Restart</button>
+        </div>
+        
+        <div id="gameWin" style="display: none; text-align: center; margin-top: 2rem; padding: 2rem; background: rgba(16, 185, 129, 0.1); border: 2px solid var(--success-color); border-radius: 8px;">
+            <h2 style="color: var(--success-color); margin-bottom: 1rem;">🎉 Congratulations! 🎉</h2>
+            <p style="margin-bottom: 1rem;">You found all pairs in <span id="finalMoves" style="font-weight: bold; color: var(--primary-color);"></span> moves!</p>
+            <button class="btn btn-primary" onclick="startGame()">Play Again</button>
+        </div>
+    </div>
+</div>
+
+<script src="{% static 'js/save-score.js' %}"></script>
+<script src="{% static 'js/memory.js' %}"></script>
+{% endblock %}
+

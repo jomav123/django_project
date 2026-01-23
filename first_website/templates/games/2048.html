@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ game.name }} - Game Hub{% endblock %}
+
+{% block content %}
+<div class="game-container">
+    <a href="{% url 'home' %}" class="back-button">← Back to Games</a>
+    
+    <div class="game-wrapper">
+        <div class="game-header">
+            <h1>{{ game.name }}</h1>
+            <p>Use arrow keys or WASD to move tiles. Combine tiles with the same number to reach 2048!</p>
+        </div>
+        
+        <div style="text-align: center; margin-bottom: 2rem;">
+            <div style="display: inline-block; background: var(--bg-dark); padding: 1rem 2rem; border-radius: 8px; margin: 0 1rem;">
+                <div style="color: var(--text-secondary); font-size: 0.9rem;">Score</div>
+                <div id="score" style="font-size: 2rem; font-weight: bold; color: var(--primary-color);">0</div>
+            </div>
+            <div style="display: inline-block; background: var(--bg-dark); padding: 1rem 2rem; border-radius: 8px; margin: 0 1rem;">
+                <div style="color: var(--text-secondary); font-size: 0.9rem;">Best</div>
+                <div id="best" style="font-size: 2rem; font-weight: bold; color: var(--success-color);">0</div>
+            </div>
+        </div>
+        
+        <div style="text-align: center; margin-bottom: 2rem;">
+            <div id="gameBoard" style="display: inline-grid; grid-template-columns: repeat(4, 1fr); gap: 0.5rem; background: var(--bg-dark); padding: 1rem; border-radius: 12px;"></div>
+        </div>
+        
+        <div style="text-align: center; margin-top: 2rem;">
+            <button class="btn btn-primary" onclick="startNewGame()">New Game</button>
+        </div>
+        
+        <div id="gameWin" style="display: none; text-align: center; margin-top: 2rem; padding: 2rem; background: rgba(16, 185, 129, 0.1); border: 2px solid var(--success-color); border-radius: 8px;">
+            <h2 style="color: var(--success-color); margin-bottom: 1rem;">🎉 You Win! 🎉</h2>
+            <p style="margin-bottom: 1rem;">You reached 2048! Keep playing to get a higher score!</p>
+            <button class="btn btn-primary" onclick="continueGame()">Continue</button>
+            <button class="btn btn-secondary" onclick="startNewGame()">New Game</button>
+        </div>
+        
+        <div id="gameOver" style="display: none; text-align: center; margin-top: 2rem; padding: 2rem; background: rgba(239, 68, 68, 0.1); border: 2px solid var(--error-color); border-radius: 8px;">
+            <h2 style="color: var(--error-color); margin-bottom: 1rem;">Game Over!</h2>
+            <p style="margin-bottom: 1rem;">Final Score: <span id="finalScore" style="font-weight: bold; color: var(--primary-color);"></span></p>
+            <button class="btn btn-primary" onclick="startNewGame()">Play Again</button>
+        </div>
+    </div>
+</div>
+
+<script src="{% static 'js/save-score.js' %}"></script>
+<script src="{% static 'js/2048.js' %}"></script>
+{% endblock %}
+

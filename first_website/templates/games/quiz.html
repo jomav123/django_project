@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ game.name }} - Game Hub{% endblock %}
+
+{% block content %}
+<div class="game-container">
+    <a href="{% url 'home' %}" class="back-button">← Back to Games</a>
+    
+    <div class="game-wrapper">
+        <div class="game-header">
+            <h1>{{ game.name }}</h1>
+            <p>Test your knowledge! Answer the questions correctly to score points.</p>
+        </div>
+        
+        <div style="text-align: center; margin-bottom: 2rem;">
+            <div style="display: inline-block; background: var(--bg-dark); padding: 1rem 2rem; border-radius: 8px; margin: 0 1rem;">
+                <div style="color: var(--text-secondary); font-size: 0.9rem;">Score</div>
+                <div id="score" style="font-size: 2rem; font-weight: bold; color: var(--primary-color);">0</div>
+            </div>
+            <div style="display: inline-block; background: var(--bg-dark); padding: 1rem 2rem; border-radius: 8px; margin: 0 1rem;">
+                <div style="color: var(--text-secondary); font-size: 0.9rem;">Question</div>
+                <div id="questionNum" style="font-size: 2rem; font-weight: bold; color: var(--text-primary);">0 / 10</div>
+            </div>
+        </div>
+        
+        <div id="quizContainer" style="max-width: 700px; margin: 0 auto;">
+            <div id="questionCard" style="background: var(--bg-dark); padding: 2rem; border-radius: 12px; margin-bottom: 2rem; border: 2px solid var(--border-color);">
+                <h2 id="question" style="margin-bottom: 2rem; color: var(--text-primary);"></h2>
+                <div id="answers" style="display: grid; gap: 1rem;"></div>
+            </div>
+            
+            <div id="result" style="display: none; text-align: center; padding: 2rem; background: rgba(99, 102, 241, 0.1); border: 2px solid var(--primary-color); border-radius: 8px; margin-bottom: 2rem;">
+                <p id="resultText" style="font-size: 1.2rem; margin-bottom: 1rem;"></p>
+            </div>
+            
+            <div style="text-align: center;">
+                <button id="nextBtn" class="btn btn-primary" onclick="nextQuestion()" style="display: none;">Next Question</button>
+                <button id="startBtn" class="btn btn-primary" onclick="startQuiz()">Start Quiz</button>
+            </div>
+        </div>
+        
+        <div id="quizComplete" style="display: none; text-align: center; margin-top: 2rem; padding: 2rem; background: rgba(16, 185, 129, 0.1); border: 2px solid var(--success-color); border-radius: 8px;">
+            <h2 style="color: var(--success-color); margin-bottom: 1rem;">🎉 Quiz Complete! 🎉</h2>
+            <p style="margin-bottom: 1rem; font-size: 1.2rem;">Your final score: <span id="finalScore" style="font-weight: bold; color: var(--primary-color); font-size: 2rem;"></span> / 10</p>
+            <p id="percentage" style="margin-bottom: 1.5rem; color: var(--text-secondary);"></p>
+            <button class="btn btn-primary" onclick="startQuiz()">Play Again</button>
+        </div>
+    </div>
+</div>
+
+<script src="{% static 'js/save-score.js' %}"></script>
+<script src="{% static 'js/quiz.js' %}"></script>
+{% endblock %}
+

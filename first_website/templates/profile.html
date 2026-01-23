@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+
+{% block title %}Profile - Game Hub{% endblock %}
+
+{% block content %}
+<div class="game-container">
+    <div class="game-wrapper">
+        <div class="game-header">
+            <h1>Your Profile</h1>
+            <p>Welcome, {{ user.username }}!</p>
+        </div>
+        
+        <h2 style="margin-bottom: 1rem; margin-top: 2rem;">High Scores</h2>
+        
+        {% if game_high_scores %}
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; margin-bottom: 2rem;">
+                {% for item in game_high_scores %}
+                    {% if item.score %}
+                        <div style="background: var(--bg-dark); padding: 1.5rem; border-radius: 8px; border: 2px solid var(--border-color);">
+                            <div style="font-size: 2rem; margin-bottom: 0.5rem;">{{ item.game.icon }}</div>
+                            <h3 style="margin-bottom: 0.5rem; color: var(--text-primary);">{{ item.game.name }}</h3>
+                            <div style="font-size: 1.5rem; font-weight: bold; color: var(--primary-color); margin-bottom: 0.5rem;">
+                                {{ item.score }}
+                            </div>
+                            <div style="font-size: 0.9rem; color: var(--text-secondary);">
+                                {{ item.date|date:"M d, Y" }}
+                            </div>
+                        </div>
+                    {% else %}
+                        <div style="background: var(--bg-dark); padding: 1.5rem; border-radius: 8px; border: 2px solid var(--border-color); opacity: 0.5;">
+                            <div style="font-size: 2rem; margin-bottom: 0.5rem;">{{ item.game.icon }}</div>
+                            <h3 style="margin-bottom: 0.5rem; color: var(--text-secondary);">{{ item.game.name }}</h3>
+                            <div style="font-size: 1rem; color: var(--text-secondary);">No score yet</div>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        {% else %}
+            <p style="color: var(--text-secondary); text-align: center; padding: 2rem;">
+                No high scores yet. Start playing games to see your best scores here!
+            </p>
+        {% endif %}
+        
+        <h2 style="margin-bottom: 1rem; margin-top: 2rem;">Recent Scores</h2>
+        
+        {% if scores %}
+            <div style="overflow-x: auto;">
+                <table style="width: 100%; border-collapse: collapse;">
+                    <thead>
+                        <tr style="border-bottom: 2px solid var(--border-color);">
+                            <th style="padding: 1rem; text-align: left;">Game</th>
+                            <th style="padding: 1rem; text-align: left;">Score</th>
+                            <th style="padding: 1rem; text-align: left;">Date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for score in scores %}
+                            <tr style="border-bottom: 1px solid var(--border-color);">
+                                <td style="padding: 1rem;">{{ score.game.name }}</td>
+                                <td style="padding: 1rem; font-weight: bold; color: var(--primary-color);">{{ score.score }}</td>
+                                <td style="padding: 1rem; color: var(--text-secondary);">{{ score.created_at|date:"M d, Y H:i" }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        {% else %}
+            <p style="color: var(--text-secondary); text-align: center; padding: 2rem;">
+                No scores yet. Start playing games to see your scores here!
+            </p>
+        {% endif %}
+        
+        <div style="text-align: center; margin-top: 2rem;">
+            <a href="{% url 'home' %}" class="btn btn-primary">Back to Games</a>
+        </div>
+    </div>
+</div>
+{% endblock %}
+

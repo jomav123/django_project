@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ game.name }} - Game Hub{% endblock %}
+
+{% block content %}
+<div class="game-container">
+    <a href="{% url 'home' %}" class="back-button">← Back to Games</a>
+    
+    <div class="game-wrapper">
+        <div class="game-header">
+            <h1>{{ game.name }}</h1>
+            <p>This game is coming soon!</p>
+        </div>
+        
+        <div style="text-align: center; padding: 3rem;">
+            <p style="font-size: 1.2rem; color: var(--text-secondary);">
+                We're working on this game. Check back soon!
+            </p>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
