@@ -5,21 +5,20 @@ A modern web-based gaming platform built with Django, featuring multiple interac
 ## Features
 
 - **3 Interactive Games:**
-  - 🐍 Snake - Classic snake game with arrow key controls
+  - 🐍 Snake - Classic snake game with arrows/WSAD keys controls
   - 🎯 Memory Game - Find matching pairs of cards
   - ❓ Quiz - Test your knowledge with multiple choice questions
+  -  
+  -
+  - Tetris - Simple tetris recreation
+  - Minesweeper - classic minesweeper with 3 diferente maps (hard/medium/easy) 
+  - 2048 -  Join the numbers using arrows/WSAD keys and get to the 2048 tile
 
 - **User System:**
   - Optional registration and login
   - Play games without logging in (no score saving)
   - Save scores when logged in
   - View your game history in profile
-
-- **Modern Design:**
-  - Responsive layout that works on all devices
-  - Beautiful gradient color scheme
-  - Smooth animations and transitions
-  - Clean and intuitive user interface
 
 ## Quick Start (Windows)
 
@@ -98,36 +97,6 @@ That's it! One file does everything! 🚀
 8. **Open your browser:**
    Navigate to http://127.0.0.1:8000/
 
-## Project Structure
-
-```
-django_project-main/
-├── first_website/          # Main application
-│   ├── models.py          # Game, User, GameScore models
-│   ├── views.py           # View functions
-│   ├── urls.py            # URL routing
-│   ├── admin.py           # Admin panel configuration
-│   └── templates/         # HTML templates
-│       ├── base.html      # Base template
-│       ├── home.html      # Home page with game grid
-│       ├── profile.html   # User profile page
-│       └── games/         # Game-specific templates
-│           ├── snake.html
-│           ├── memory.html
-│           └── quiz.html
-├── website/               # Project settings
-│   ├── settings.py        # Django settings
-│   └── urls.py           # Main URL configuration
-├── static/               # Static files (CSS, JS, images)
-│   ├── css/
-│   │   └── style.css     # Main stylesheet
-│   └── js/               # JavaScript files
-│       ├── snake.js
-│       ├── memory.js
-│       └── quiz.js
-├── manage.py             # Django management script
-└── requirements.txt      # Python dependencies
-```
 
 ## Games
 
@@ -178,9 +147,11 @@ django_project-main/
 - **Frontend:** HTML5, CSS3, JavaScript (Vanilla)
 - **Database:** SQLite (default, can be changed in settings)
 
-## License
+## Team
 
-This project is open source and available for educational purposes.
+- **Jo-jo Mavoungou:** Backend, Login system
+- **Jakub Kołodziejczyk:** Games, Frontend, Login system (after messing it up, fixed it) 
+- **Israel Okolie:** Frontend, Databases
 
 ## Notes
 
