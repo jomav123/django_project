@@ -37,7 +37,6 @@ A modern web-based gaming platform built with Django, featuring multiple interac
    - Login with superuser (create one if needed: `python manage.py createsuperuser`)
    - Add games or use `create_games.py` script
 
-That's it! One file does everything! 🚀
 
 ## Manual Installation
 
