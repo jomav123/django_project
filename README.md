@@ -4,7 +4,7 @@ A modern web-based gaming platform built with Django, featuring multiple interac
 
 ## Features
 
-- **3 Interactive Games:**
+- **9 Interactive Games:**
   - 🐍 Snake - Classic snake game with arrows/WSAD keys controls
   - 🎯 Memory Game - Find matching pairs of cards
   - ❓ Quiz - Test your knowledge with multiple choice questions
