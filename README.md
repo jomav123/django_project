@@ -8,11 +8,12 @@ A modern web-based gaming platform built with Django, featuring multiple interac
   - 🐍 Snake - Classic snake game with arrows/WSAD keys controls
   - 🎯 Memory Game - Find matching pairs of cards
   - ❓ Quiz - Test your knowledge with multiple choice questions
-  -  
-  -
-  - Tetris - Simple tetris recreation
-  - Minesweeper - classic minesweeper with 3 diferente maps (hard/medium/easy) 
-  - 2048 -  Join the numbers using arrows/WSAD keys and get to the 2048 tile
+  - ⭕ Tic-Tac-Toe - Play tic-tac-toe againts computer
+  - 🎾 Breakout - Simple breakout level
+  - 🎭 Hangman - Guess the world by leters 
+  - 🧩 Tetris - Simple tetris recreation
+  - 💣 Minesweeper - classic minesweeper with 3 diferente maps (hard/medium/easy) 
+  - 🔢 2048 -  Join the numbers using arrows/WSAD keys and get to the 2048 tile
 
 - **User System:**
   - Optional registration and login
@@ -97,26 +98,6 @@ That's it! One file does everything! 🚀
 8. **Open your browser:**
    Navigate to http://127.0.0.1:8000/
 
-
-## Games
-
-### Snake 🐍
-- Use arrow keys to control the snake
-- Eat food to grow and score points
-- Avoid hitting walls or yourself
-- High score is saved in browser localStorage
-
-### Memory Game 🎯
-- Click cards to flip them
-- Find matching pairs
-- Try to complete with as few moves as possible
-- 8 pairs to find
-
-### Quiz ❓
-- Answer 10 multiple choice questions
-- Get instant feedback on your answers
-- See your final score and percentage
-- Questions cover various topics
 
 ## Usage
 
